@@ -18,7 +18,8 @@
   "license": "Apache-2.0",
   "production": false,
   "dependencies": {
-    "electron": "6.1.7"
+    "electron": "6.1.7",
+    "xlsx": "^0.15.4"
   },
   "devDependencies": {
     "replace-in-file": "^2.5.3"

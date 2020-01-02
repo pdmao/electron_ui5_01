@@ -37,15 +37,23 @@ sap.ui.define([
           this.eleapi = {};
           this.eleapi.require = window.nodeRequire;
           this.eleapi.electron = this.eleapi.require('electron');
-          this.eleapi.fs = this.eleapi.require("fs")
+          this.eleapi.fs = this.eleapi.require("fs");
+          this.eleapi.XLSX = this.eleapi.require("xlsx");
 
           var buf = this.eleapi.fs.readFileSync("./app/models/uiModel.json");
 
             // call the init function of the parent
             UIComponent.prototype.init.apply(this, arguments);
+
             var uiModel = new sap.ui.model.json.JSONModel(JSON.parse(buf));
-            //sap.ui.getCore().setModel( uiModel, "uimodel" );
             this.setModel( uiModel , "uimodel");
+
+            var fsModel = new sap.ui.model.json.JSONModel();
+            this.setModel( fsModel , "fsmodel");
+
+            var xlModel = new sap.ui.model.json.JSONModel();
+            this.setModel( xlModel , "xlmodel");
+
             global.eleapi = this.eleapi;
             var a = 1;
         }
