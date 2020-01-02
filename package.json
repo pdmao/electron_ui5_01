@@ -1,0 +1,26 @@
+{
+  "name": "testapp",
+  "version": "0.0.1",
+  "description": "test application",
+  "main": "main.js",
+  "namespace": "spin8",
+  "readme": "README.md",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "http//git.com/"
+  },
+  "keywords": [],
+  "author": "pdm",
+  "email": "pdm@spin8.io",
+  "license": "Apache-2.0",
+  "production": false,
+  "dependencies": {
+    "electron": "6.1.7"
+  },
+  "devDependencies": {
+    "replace-in-file": "^2.5.3"
+  }
+}

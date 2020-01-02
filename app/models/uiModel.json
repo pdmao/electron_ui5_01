@@ -1,0 +1,53 @@
+{
+"pnl01":{
+  "visible": true,
+  "title" : "panel01",
+  "uco01" : {
+    "noDataDesc":"Drop Files here or use the (plus) button to select",
+    "fileType" : ["csv", "xlsx"],
+    "mimeType" : ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv" ]
+
+    },
+  "btn02" : {
+    "text" : "upload NOW!",
+    "icon" : "sap-icon://upload"
+  }
+},
+"pnl02":{
+  "visible": true,
+  "title" : "panel 02",
+  "imgurl" : "https://openui5.hana.ondemand.com/resources/sap/ui/documentation/sdk/images/logo_ui5.png"
+
+},
+"pnl03":{
+  "visible": true,
+  "title" : "panel 03",
+  "imgurl" : "https://openui5.hana.ondemand.com/resources/sap/ui/documentation/sdk/images/logo_ui5.png"
+
+},
+"itb01":{
+  "ico01":{
+    "icon" : "sap-icon://sap-box",
+    "color": "Critical",
+    "text" : "icon01 text",
+    "key"  : "ico01"
+
+  },
+  "ico02":{
+    "icon" : "sap-icon://display",
+    "color": "Critical",
+    "text" : "icon02 text",
+    "key"  : "ico02"
+},
+"ico03":{
+  "icon" : "sap-icon://activate",
+  "color": "Critical",
+  "text" : "icon03 text",
+  "key"  : "ico03"
+}
+},
+
+"icon":"sap-icon://begin"
+
+
+}
