@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mvc:View    xmlns="sap.m"    xmlns:l="sap.ui.layout"    xmlns:core="sap.ui.core"    xmlns:mvc="sap.ui.core.mvc"    xmlns:html="http://www.w3.org/1999/xhtml"    controllerName="spin8.app.controllers.MainView"    displayBlock="true">
+<mvc:View    xmlns="sap.m"  xmlns:t="sap.ui.table"  xmlns:l="sap.ui.layout"    xmlns:core="sap.ui.core"  xmlns:mvc="sap.ui.core.mvc"    xmlns:html="http://www.w3.org/1999/xhtml"  controllerName="spin8.app.controllers.MainView"    displayBlock="true">
   <App>
     <pages>
       <Page title="Untitled">
@@ -7,7 +7,6 @@
           <Button text="test button" press="onButPress" id="brn01"/>
           <IconTabBar   expanded="true"  	id="idIconTabBar"   	select="handleIconTabBarSelect" class="sapUiResponsiveContentPadding">
             <items>
-
               <IconTabFilter    icon="{uimodel>/itb01/ico01/icon}" iconColor="{uimodel>/itb01/ico01/color}" design="Vertical" text="{uimodel>/itb01/ico01/text}" key="{uimodel>/itb01/ico01/key}" >
                 <content>
                   <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region" id="pnl01" visible="{uimodel>/pnl01/visible}">
@@ -17,25 +16,9 @@
                       </OverflowToolbar>
                     </headerToolbar>
                     <content>
-                      <UploadCollection
-                  			id="uco01"
-                        fileType="{uimodel>/pnl01/uco01/fileType}"
-                        mimeType="{uimodel>/pnl01/uco01/mimeType}"
-                  			maximumFilenameLength="55"
-                  			maximumFileSize="10"
-                  			multiple="true"
-                  			sameFilenameAllowed="false"
-                  			instantUpload="false"
-                  			noDataDescription="{uimodel>/pnl01/uco01/noDataDesc}"
-                  			change="onUploadChange"
-                  			fileDeleted="onFileDeleted"
-                  			filenameLengthExceed="onFilenameLengthExceed"
-                  			fileSizeExceed="onFileSizeExceed"
-                  			typeMissmatch="onTypeMissmatch"
-                  			uploadComplete="onUploadComplete"
-                  			beforeUploadStarts="onBeforeUploadStarts" />
-                  		<Button id="btn02" text="{uimodel>/pnl01/btn02/text}" press="onStartUpload"  icon="{uimodel>/pnl01/btn02/icon}" type="sap.m.ButtonType.Success"/>
-                      </content>
+                      <UploadCollection                  			id="uco01"                        fileType="{uimodel>/pnl01/uco01/fileType}"                        mimeType="{uimodel>/pnl01/uco01/mimeType}"                  			maximumFilenameLength="55"                  			maximumFileSize="10"                  			multiple="true"                  			sameFilenameAllowed="false"                  			instantUpload="false"                  			noDataDescription="{uimodel>/pnl01/uco01/noDataDesc}"                  			change="onUploadChange"                  			fileDeleted="onFileDeleted"                  			filenameLengthExceed="onFilenameLengthExceed"                  			fileSizeExceed="onFileSizeExceed"                  			typeMissmatch="onTypeMissmatch"                  			uploadComplete="onUploadComplete"                  			beforeUploadStarts="onBeforeUploadStarts" />
+                      <Button id="btn02" text="{uimodel>/pnl01/btn02/text}" press="onStartUpload"  icon="{uimodel>/pnl01/btn02/icon}" type="sap.m.ButtonType.Success"/>
+                    </content>
                   </Panel>
                 </content>
               </IconTabFilter>
@@ -49,10 +32,46 @@
                       </OverflowToolbar>
                     </headerToolbar>
                     <content>
-                      <l:HorizontalLayout>
-                        <Image src="{uimodel>/pnl02/imgurl}" width="10em" />
-                      </l:HorizontalLayout>
-                      <Text text="Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat" />
+                      <l:VerticalLayout>
+                        <t:Table id="tblFiles"      				rows="{xlmodel>/}"      				selectionMode="MultiToggle"      				visibleRowCount="7"            			paste="onPaste"   alternateRowColors="true"		arialabelledby="title">
+                          <t:columns>
+                            <t:Column width="11rem">
+                              <Label text="File Name" />
+                              <t:template>
+                                <Text text="{xlmodel>file}" wrapping="false" />
+                              </t:template>
+                            </t:Column>
+                            <t:Column width="11rem">
+                              <Label text="Sheet Name" />
+                              <t:template>
+                                <Text text="{xlmodel>sheet}" wrapping="false" />
+                              </t:template>
+                            </t:Column>
+                            <t:Column width="2rem">
+                              <Label text="Status" />
+                              <t:template>
+                                <Text text="{xlmodel>status}" wrapping="false" />
+                              </t:template>
+                            </t:Column>
+                            <t:Column width="5rem">
+                              <Label text="Rows" />
+                              <t:template>
+                                <Text text="{xlmodel>rows}" wrapping="false" />
+                              </t:template>
+                            </t:Column>
+                            <t:Column width="9rem">
+                              <Label text="Details" />
+                              <t:template>
+                                <Button text="Show Details" press="onTabPress"/>
+                              </t:template>
+                            </t:Column>
+                          </t:columns>
+                        </t:Table>
+                        <ScrollContainer                                                            id="scc01"                                                        		height="100%"                                                        		width="50%"                                                            horizontal="true"                                                        		vertical="true"                                                        		focusable="true">
+                          <core:HTML content='' id='htm01'>
+                          </core:HTML>
+                        </ScrollContainer>
+                      </l:VerticalLayout>
                     </content>
                   </Panel>
                 </content>
@@ -76,7 +95,6 @@
                 </content>
               </IconTabFilter>
             </items>
-
           </IconTabBar>
         </content>
       </Page>

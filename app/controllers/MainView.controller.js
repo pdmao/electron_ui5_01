@@ -69,10 +69,12 @@ sap.ui.define([
               var sShtName = aSheets[iShtKey];
               var oShtItem = xFile.Sheets[sShtName];
               var oShtJson = global.eleapi.XLSX.utils.sheet_to_json(oShtItem);
+              var sShtHtml = global.eleapi.XLSX.utils.sheet_to_html(oShtItem,{header:'<div>', footer:'</div>', id:"htmltab", editable:true});
               var iRowCont = oShtJson.length;
-              oXlModel.push( {file:  sName , sheet: sShtName, status:"", type : sType, rows: iRowCont, data: oShtJson } );
+              oXlModel.push( {file:  sName , sheet: sShtName, status:"", type : sType, rows: iRowCont, data: oShtJson , item: oItem, html: sShtHtml} );
 
           }
+
         //   // this.eleapi.XLSX
         }
 
@@ -99,6 +101,39 @@ sap.ui.define([
         var oFsModel = oView.getModel("fsmodel").getData();
         oFsModel[sName] = oData;
         oView.getModel("fsmodel").setData(oFsModel);
+
+      },
+
+      onTabPress: function(evt){
+        var a = 1;
+        var aCells = evt.getSource().getParent().getCells();
+        var sFileName = aCells[0].getText();
+        var sShtName = aCells[1].getText();
+
+        MessageToast.show("pressed item for " + sFileName + " - " + sShtName);
+
+        var oDetails = this.getSheetDetails(sFileName, sShtName);
+        var sHtml = oDetails.hasOwnProperty("html")? oDetails.html : "";
+        var oHtml = this.byId("htm01");
+        oHtml.setContent(sHtml);
+      },
+
+      getSheetDetails: function(sFileName, sShtName){
+        var aData = this.getView().getModel("xlmodel").getData();
+        var oLine = {};
+        for(var idx = 0; idx < aData.length; idx++){
+          oLine = aData[idx];
+          if (oLine.file == sFileName && oLine.sheet == sShtName){
+            break;
+          }
+        }
+
+        return(oLine);
+      },
+
+      testMethod: function(sFileName, sShtName){
+        console.log(sFileName);
+        console.log(sShtName);
 
       }
 
