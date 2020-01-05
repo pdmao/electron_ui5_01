@@ -54,6 +54,10 @@ sap.ui.define([
             var xlModel = new sap.ui.model.json.JSONModel();
             this.setModel( xlModel , "xlmodel");
 
+            buf = this.eleapi.fs.readFileSync("./app/models/xpModel.json");
+            var xpModel = new sap.ui.model.json.JSONModel(JSON.parse(buf));
+            this.setModel( xpModel , "xpmodel");
+
             global.eleapi = this.eleapi;
             var a = 1;
         }

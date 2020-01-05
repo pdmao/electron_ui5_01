@@ -79,7 +79,7 @@ sap.ui.define([
         }
 
         oView.getModel("xlmodel").setData(oXlModel);
-        var a = 1;
+        var x = 1;
       },
 
       onFileDeleted: function(evt){
@@ -113,9 +113,63 @@ sap.ui.define([
         MessageToast.show("pressed item for " + sFileName + " - " + sShtName);
 
         var oDetails = this.getSheetDetails(sFileName, sShtName);
-        var sHtml = oDetails.hasOwnProperty("html")? oDetails.html : "";
-        var oHtml = this.byId("htm01");
-        oHtml.setContent(sHtml);
+        var oData1 = oDetails.hasOwnProperty("data")? oDetails.data : {};
+        var oTable = this.byId("tblData");
+        var oXpMod = this.getView().getModel("xpmodel").getData();
+        var fldRow = 0;
+        try{
+          fldRow = oXpMod.view.json2table.fldrow;
+        }
+        catch (e){}
+
+        var txtRow = 0;
+        try{
+          txtRow = oXpMod.view.json2table.txtrow;
+        }
+        catch (e){}
+
+        var dtaMin = 1;
+        try{
+          dtaMin = oXpMod.view.json2table.dtamin;
+        }
+        catch (e){}
+
+        var dtaMax = 10;
+        try{
+          dtaMax = oXpMod.view.json2table.dtamax;
+        }
+        catch (e){}
+        var aFlds = [];
+        if (fldRow == -1){
+          aFlds = Object.keys( oData1[0] );
+        }else{
+          aFlds = oData1[fldRow];
+        }
+
+        var aTxts = oData1[txtRow];
+
+
+        oTable.destroyColumns();
+
+        for (var idx = 0; idx < aFlds.length ; idx++){
+          var sFld  = aFlds[idx];
+          var oText = new sap.m.Text();
+
+          oText.bindText(sFld);
+
+          var oColumn = new sap.ui.table.Column();
+          oColumn.setLabel(aTxts[sFld]);
+          oColumn.setTemplate(oText);
+          oColumn.setName(sFld);
+          oTable.addColumn(oColumn);
+
+        }
+        var oData2 = oData1.slice(dtaMin, dtaMax);
+        var oTbModel = new sap.ui.model.json.JSONModel();
+        oTbModel.setData({data : oData2});
+        oTable.setModel(oTbModel);
+        oTable.bindRows("/data");
+
       },
 
       getSheetDetails: function(sFileName, sShtName){

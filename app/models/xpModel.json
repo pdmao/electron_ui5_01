@@ -1,0 +1,17 @@
+{
+  "data":{
+    "fields":{}
+  },
+  "view" :{
+    "json2table": {
+      "fldrow" :-1,
+      "txtrow" :0,
+      "dtamin" :1,
+      "dtamax" :9999
+     }
+  },
+  "proc":{
+
+  }
+
+}

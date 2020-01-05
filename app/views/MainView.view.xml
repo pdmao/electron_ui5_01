@@ -17,7 +17,7 @@
                     </headerToolbar>
                     <content>
                       <UploadCollection                  			id="uco01"                        fileType="{uimodel>/pnl01/uco01/fileType}"                        mimeType="{uimodel>/pnl01/uco01/mimeType}"                  			maximumFilenameLength="55"                  			maximumFileSize="10"                  			multiple="true"                  			sameFilenameAllowed="false"                  			instantUpload="false"                  			noDataDescription="{uimodel>/pnl01/uco01/noDataDesc}"                  			change="onUploadChange"                  			fileDeleted="onFileDeleted"                  			filenameLengthExceed="onFilenameLengthExceed"                  			fileSizeExceed="onFileSizeExceed"                  			typeMissmatch="onTypeMissmatch"                  			uploadComplete="onUploadComplete"                  			beforeUploadStarts="onBeforeUploadStarts" />
-                      <Button id="btn02" text="{uimodel>/pnl01/btn02/text}" press="onStartUpload"  icon="{uimodel>/pnl01/btn02/icon}" type="sap.m.ButtonType.Success"/>
+                      <Button id="btn02" text="{uimodel>/pnl01/btn02/text}" width="50%" press="onStartUpload"  icon="{uimodel>/pnl01/btn02/icon}" />
                     </content>
                   </Panel>
                 </content>
@@ -33,44 +33,60 @@
                     </headerToolbar>
                     <content>
                       <l:VerticalLayout>
-                        <t:Table id="tblFiles"      				rows="{xlmodel>/}"      				selectionMode="MultiToggle"      				visibleRowCount="7"            			paste="onPaste"   alternateRowColors="true"		arialabelledby="title">
+                        <t:Table id="tblFiles"      				rows="{xlmodel>/}"      				selectionMode="MultiToggle"      				visibleRowCount="7"            			paste="onPaste"   alternateRowColors="true"	>
                           <t:columns>
                             <t:Column width="11rem">
+                              <t:multiLabels>
                               <Label text="File Name" />
+                             </t:multiLabels>
                               <t:template>
                                 <Text text="{xlmodel>file}" wrapping="false" />
                               </t:template>
                             </t:Column>
                             <t:Column width="11rem">
+                                <t:multiLabels>
                               <Label text="Sheet Name" />
+                            </t:multiLabels>
                               <t:template>
                                 <Text text="{xlmodel>sheet}" wrapping="false" />
                               </t:template>
                             </t:Column>
                             <t:Column width="2rem">
+                                <t:multiLabels>
                               <Label text="Status" />
+                            </t:multiLabels>
                               <t:template>
                                 <Text text="{xlmodel>status}" wrapping="false" />
                               </t:template>
                             </t:Column>
                             <t:Column width="5rem">
+                                <t:multiLabels>
                               <Label text="Rows" />
+                            </t:multiLabels>
                               <t:template>
                                 <Text text="{xlmodel>rows}" wrapping="false" />
                               </t:template>
                             </t:Column>
                             <t:Column width="9rem">
+                                <t:multiLabels>
                               <Label text="Details" />
+                            </t:multiLabels>
                               <t:template>
                                 <Button text="Show Details" press="onTabPress"/>
                               </t:template>
                             </t:Column>
                           </t:columns>
                         </t:Table>
-                        <ScrollContainer                                                            id="scc01"                                                        		height="100%"                                                        		width="50%"                                                            horizontal="true"                                                        		vertical="true"                                                        		focusable="true">
+                        <!-- <ScrollContainer      id="scc01"      		height="50%"    	width="80%"
+                                                                                    horizontal="true"                                                        		vertical="true"                                                        		focusable="true">
                           <core:HTML content='' id='htm01'>
                           </core:HTML>
-                        </ScrollContainer>
+                        </ScrollContainer> -->
+                        <t:Table id="tblData"  visibleRowCount="7"   alternateRowColors="true">
+                          <t:columns>
+                          </t:columns>
+                        </t:Table>
+
                       </l:VerticalLayout>
                     </content>
                   </Panel>
