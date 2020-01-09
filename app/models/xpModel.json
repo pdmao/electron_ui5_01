@@ -1,6 +1,23 @@
 {
   "data":{
-    "fields":{}
+    "fields":{
+        "field1":{},
+        "field2":{},
+        "field3":{},
+        "field4":{},
+    },
+    "models": [
+      {
+        "name" : "",
+        "props":{
+          "opt" :[],
+          "req" :[],
+          "xcl" :[]
+        }
+      }
+
+
+    ]
   },
   "view" :{
     "json2table": {

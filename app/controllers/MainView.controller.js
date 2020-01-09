@@ -189,6 +189,65 @@ sap.ui.define([
         console.log(sFileName);
         console.log(sShtName);
 
+      },
+
+      checkObjProsReq: function(obj, props){
+        if( ! (obj instanceof Object)){
+          return -1;
+        }
+
+        if( ! (Array.isArray(props) ) ){
+          return -2;
+        }
+        var propInList = props.length;
+        var propInObj  = checkObjProps(obj, props);
+        return( propInList == propInObj ? 1 : 0);
+      },
+
+      checkObjProsXcl: function(obj, props){
+        if( ! (obj instanceof Object)){
+          return -1;
+        }
+
+        if( ! (Array.isArray(props) ) ){
+          return -2;
+        }
+        var propInList = props.length;
+        var propInObj  = checkObjProps(obj, props);
+        return( propInObj == 0 ? 1 : 0);
+      },
+
+      checkObjProsOpt: function(obj, props){
+        if( ! (obj instanceof Object)){
+          return -1;
+        }
+
+        if( ! (Array.isArray(props) ) ){
+          return -2;
+        }
+        var propInList = props.length;
+        var propInObj  = checkObjProps(obj, props);
+        return( propInObj > 0 ? 1 : 0);
+      },
+
+
+      checkObjProps: function( obj, props ){
+        if( ! (obj instanceof Object)){
+          return -1;
+        }
+
+        if( ! (Array.isArray(props) ) ){
+          return -2;
+        }
+        var iPropCnt  =  0;
+        for(var idx = 0 ; idx < props.length; idx++ ){
+          if(obj.hasOwnProperty(props[idx])){
+            iPropCnt ++;
+          }
+      }
+
+      return iPropCnt;
+
       }
 
 
