@@ -19,7 +19,7 @@
   "production": false,
   "dependencies": {
     "electron": "6.1.7",
-    "xlsx": "^0.15.4"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "replace-in-file": "^2.5.3"
